@@ -16,13 +16,9 @@ import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public class AddElementFragment extends Fragment {
@@ -34,10 +30,10 @@ public class AddElementFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_add_element, container, false);
-        Button btnAdd = view.findViewById(R.id.btnAdd);
-        EditText txtNombre = view.findViewById(R.id.txtNombrePro);
-        EditText txtDesc = view.findViewById(R.id.txtDescPro);
-        EditText txtImg = view.findViewById(R.id.txtImgPro);
+        Button btnAdd = view.findViewById(R.id.btnEditar);
+        EditText txtNombre = view.findViewById(R.id.txtNombreProEdit);
+        EditText txtDesc = view.findViewById(R.id.txtDescProEdit);
+        EditText txtImg = view.findViewById(R.id.txtImgProEdit);
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override

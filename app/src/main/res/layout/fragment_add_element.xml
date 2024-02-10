@@ -14,7 +14,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/txtTituloAdd"
+            android:id="@+id/txtTituloEdit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="35dp"
@@ -25,7 +25,7 @@
             android:textSize="40sp" />
 
         <EditText
-            android:id="@+id/txtNombrePro"
+            android:id="@+id/txtNombreProEdit"
             android:layout_width="290dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -39,7 +39,7 @@
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/txtDescPro"
+            android:id="@+id/txtDescProEdit"
             android:layout_width="290dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -53,7 +53,7 @@
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/txtImgPro"
+            android:id="@+id/txtImgProEdit"
             android:layout_width="290dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -67,7 +67,7 @@
             android:textSize="20sp" />
 
         <Button
-            android:id="@+id/btnAdd"
+            android:id="@+id/btnEditar"
             android:layout_width="200dp"
             android:layout_height="80dp"
             android:layout_gravity="center"
