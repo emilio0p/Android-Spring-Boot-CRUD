@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#948BFC"
+    tools:context=".SignOutFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="563dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="250dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/poppins_semibold"
+            android:gravity="center"
+            android:text="¿Cerrar sesión?"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="40sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnYes"
+                android:layout_width="150dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="0dp"
+                android:layout_marginRight="70dp"
+                android:backgroundTint="#7F65BC"
+                android:fontFamily="@font/poppins_extrabold"
+                android:gravity="center|center_vertical"
+                android:text="SÍ"
+                android:textColorHighlight="@color/white"
+                android:textColorLink="@color/white"
+                android:textSize="25sp" />
+
+            <Button
+                android:id="@+id/btnNo"
+                android:layout_width="150dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:backgroundTint="#47307F"
+                android:fontFamily="@font/poppins_extrabold"
+                android:gravity="center|center_vertical"
+                android:text="NO"
+                android:textColorHighlight="@color/white"
+                android:textColorLink="@color/white"
+                android:textSize="25sp" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>

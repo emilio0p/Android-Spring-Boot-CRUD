@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_home"
+        android:title="Inicio"
+        android:icon="@drawable/ic_home" />
+    <item
+        android:id="@+id/navigation_create"
+        android:title="Añadir"
+        android:icon="@drawable/ic_add" />
+    <item
+        android:id="@+id/navigation_modify"
+        android:title="Modificar"
+        android:icon="@drawable/ic_edit" />
+
+    <item
+        android:id="@+id/navigation_delete"
+        android:title="Eliminar"
+        android:icon="@drawable/ic_delete" />
+
+    <item
+        android:id="@+id/navigation_cerrar_sesion"
+        android:title="Cerrar sesión"
+        android:icon="@drawable/ic_out" />
+</menu>

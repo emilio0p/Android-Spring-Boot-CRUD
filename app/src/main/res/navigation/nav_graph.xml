@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.vedruna.ordunapenaev2.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_addElementFragment"
+            app:destination="@id/addElementFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_modifyElementFragment"
+            app:destination="@id/modifyElementFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_deleteElementFragment"
+            app:destination="@id/deleteElementFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_signOutFragment"
+            app:destination="@id/signOutFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addElementFragment"
+        android:name="com.vedruna.ordunapenaev2.AddElementFragment"
+        android:label="fragment_add_element"
+        tools:layout="@layout/fragment_add_element" />
+    <fragment
+        android:id="@+id/modifyElementFragment"
+        android:name="com.vedruna.ordunapenaev2.ModifyElementFragment"
+        android:label="fragment_modify_element"
+        tools:layout="@layout/fragment_modify_element" />
+    <fragment
+        android:id="@+id/deleteElementFragment"
+        android:name="com.vedruna.ordunapenaev2.DeleteElementFragment"
+        android:label="fragment_delete_element"
+        tools:layout="@layout/fragment_delete_element" />
+    <fragment
+        android:id="@+id/signOutFragment"
+        android:name="com.vedruna.ordunapenaev2.SignOutFragment"
+        android:label="fragment_sign_out"
+        tools:layout="@layout/fragment_sign_out" />
+</navigation>
