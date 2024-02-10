@@ -25,7 +25,7 @@
             android:textSize="40sp" />
 
         <EditText
-            android:id="@+id/txtNombreProEdit"
+            android:id="@+id/txtIdProDelete"
             android:layout_width="290dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

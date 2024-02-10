@@ -40,34 +40,6 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ViewHold
         context = parent.getContext();
         View view = LayoutInflater.from(context).inflate(R.layout.item_project, parent, false);
 
-        Button btnEdit = view.findViewById(R.id.btnEdit);
-        Button btnDelete = view.findViewById(R.id.btnDelete);
-        btnEdit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Project project = projectList.get(pos);
-                // Obtener el NavController desde el View raíz del fragmento actual
-                NavController navController = Navigation.findNavController(v);
-
-                // Crear un Bundle para los argumentos y agregar los valores necesarios
-                Bundle args = new Bundle();
-                args.putString("nombre_proyecto", project.getNombre());
-                args.putString("desc_proyecto", project.getDescripcion());
-                args.putString("img_proyecto", project.getImagen());
-
-                // Navegar al destino deseado junto con los argumentos
-                navController.navigate(R.id.modifyElementFragment, args);
-
-            }
-        });
-
-        btnDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Aqui habria que mostrar el fragment de eliminar
-            }
-        });
-
 
         return new ViewHolder(view);
     }
@@ -89,6 +61,43 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ViewHold
                 .error(R.drawable.ic_home)
                 .transform(new RoundRectTransformation(30,0))
                 .into(holder.imageView);
+
+        holder.btnEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int position = holder.getAdapterPosition();
+                Project project = projectList.get(position);
+                // Obtener el NavController desde el View raíz del fragmento actual
+                NavController navController = Navigation.findNavController(v);
+
+                // Crear un Bundle para los argumentos y agregar los valores necesarios
+                Bundle args = new Bundle();
+                args.putString("nombre_proyecto", project.getNombre());
+                args.putString("desc_proyecto", project.getDescripcion());
+                args.putString("img_proyecto", project.getImagen());
+
+                // Navegar al destino deseado junto con los argumentos
+                navController.navigate(R.id.modifyElementFragment, args);
+
+            }
+        });
+
+        holder.btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int position = holder.getAdapterPosition();
+                Project project = projectList.get(position);
+                // Obtener el NavController desde el View raíz del fragmento actual
+                NavController navController = Navigation.findNavController(v);
+
+                // Crear un Bundle para los argumentos y agregar los valores necesarios
+                Bundle args = new Bundle();
+                args.putInt("id_proyecto", project.getId());
+
+                // Navegar al destino deseado junto con los argumentos
+                navController.navigate(R.id.deleteElementFragment, args);
+            }
+        });
 
 
 

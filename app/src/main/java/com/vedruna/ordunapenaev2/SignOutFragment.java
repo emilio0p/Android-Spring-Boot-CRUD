@@ -6,7 +6,6 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,8 +23,8 @@ public class SignOutFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_sign_out, container, false);
 
-        Button btnYes = view.findViewById(R.id.btnYes);
-        Button btnNo = view.findViewById(R.id.btnNo);
+        Button btnYes = view.findViewById(R.id.btnYesSignOut);
+        Button btnNo = view.findViewById(R.id.btnNoSignOut);
 
         btnYes.setOnClickListener(new View.OnClickListener() {
             @Override

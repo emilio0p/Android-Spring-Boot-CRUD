@@ -3,13 +3,94 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#948BFC"
     tools:context=".DeleteElementFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#948BFC"
-        android:text="Eliminar" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/poppins_extrabold"
+            android:gravity="center"
+            android:text="ELIMINAR PROYECTO"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="38sp" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="100dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/poppins_medium"
+            android:gravity="center"
+            android:text="ISPI del proyecto:"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="38sp" />
+
+        <EditText
+            android:id="@+id/txtIdProDelete"
+            android:layout_width="290dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:ems="10"
+            android:fontFamily="@font/poppins"
+            android:hint="Introduce ISPI"
+            android:inputType="text"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="20sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginTop="100dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnYesDelete"
+                android:layout_width="150dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="0dp"
+                android:layout_marginRight="70dp"
+                android:backgroundTint="#7F65BC"
+                android:fontFamily="@font/poppins_extrabold"
+                android:gravity="center|center_vertical"
+                android:text="SÍ"
+                android:textColorHighlight="@color/white"
+                android:textColorLink="@color/white"
+                android:textSize="25sp" />
+
+            <Button
+                android:id="@+id/btnNoDelete"
+                android:layout_width="150dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:backgroundTint="#47307F"
+                android:fontFamily="@font/poppins_extrabold"
+                android:gravity="center|center_vertical"
+                android:text="NO"
+                android:textColorHighlight="@color/white"
+                android:textColorLink="@color/white"
+                android:textSize="25sp" />
+
+        </LinearLayout>
+    </LinearLayout>
 
 </FrameLayout>

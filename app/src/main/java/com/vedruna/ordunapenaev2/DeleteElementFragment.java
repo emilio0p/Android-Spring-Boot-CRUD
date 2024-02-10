@@ -3,62 +3,107 @@ package com.vedruna.ordunapenaev2;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link DeleteElementFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+
 public class DeleteElementFragment extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public DeleteElementFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment DeleteElementFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static DeleteElementFragment newInstance(String param1, String param2) {
-        DeleteElementFragment fragment = new DeleteElementFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+
+        // Obtener los argumentos pasados al fragmento
+        Bundle args = getArguments();
+        if (args != null) {
+            // Acceder a los valores de los argumentos
+            int argId = args.getInt("id_proyecto");
+            EditText idPro = view.findViewById(R.id.txtIdProDelete);
+            idPro.setText(String.valueOf(argId));
+
         }
     }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_delete_element, container, false);
+        View view = inflater.inflate(R.layout.fragment_delete_element, container, false);
+
+        Button btnYes = view.findViewById(R.id.btnYesDelete);
+        Button btnNo = view.findViewById(R.id.btnNoDelete);
+        EditText txtId = view.findViewById(R.id.txtIdProDelete);
+
+        btnYes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (txtId.getText().toString().isEmpty()){
+                Toast.makeText(getContext(), "Debes rellenar todos los campos!",
+                        Toast.LENGTH_SHORT).show();
+            } else {
+
+                ApiService apiService = ApiClient.getClient().create(ApiService.class);
+                Call<Void> call = apiService.deletePro(Long.parseLong(txtId.getText().toString()));
+
+                call.enqueue(new Callback<Void>() {
+                    @Override
+                    public void onResponse(Call<Void> call, Response<Void> response) {
+                        if (response.isSuccessful()) {
+                            Toast.makeText(getContext(), "Proyecto eliminado correctamente",
+                                    Toast.LENGTH_SHORT).show();
+                            NavController navController = Navigation.
+                                    findNavController(requireActivity(), R.id.nav_host_fragment);
+                            navController.navigate(R.id.homeFragment);
+                            BottomNavigationView bottomNavigationView = getActivity().
+                                    findViewById(R.id.bottomNavigationView);
+                            bottomNavigationView.setSelectedItemId(R.id.navigation_home);
+                        } else {
+                            Toast.makeText(getContext(), "Error al eliminar el proyecto",
+                                    Toast.LENGTH_SHORT).show();
+
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<Void> call, Throwable t) {
+                        Toast.makeText(getContext(), "Error de conexión", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+
+            }
+        });
+
+        btnNo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity().getApplicationContext(),
+                        "No has eliminado el proyecto",
+                        Toast.LENGTH_SHORT).show();
+
+                NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment);
+
+                // Ahora puedes utilizar el NavController como desees
+                // Por ejemplo, navegar a un destino específico
+                navController.navigate(R.id.homeFragment);
+                BottomNavigationView bottomNavigationView = getActivity().findViewById(R.id.bottomNavigationView);
+                bottomNavigationView.setSelectedItemId(R.id.navigation_home);
+            }
+        });
+
+        return view;
     }
 }

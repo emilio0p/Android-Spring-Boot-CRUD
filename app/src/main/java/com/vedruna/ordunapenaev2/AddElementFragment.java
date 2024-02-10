@@ -31,7 +31,7 @@ public class AddElementFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_add_element, container, false);
         Button btnAdd = view.findViewById(R.id.btnEditar);
-        EditText txtNombre = view.findViewById(R.id.txtNombreProEdit);
+        EditText txtNombre = view.findViewById(R.id.txtIdProDelete);
         EditText txtDesc = view.findViewById(R.id.txtDescProEdit);
         EditText txtImg = view.findViewById(R.id.txtImgProEdit);
 

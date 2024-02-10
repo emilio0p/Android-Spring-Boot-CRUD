@@ -10,9 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.Toast;
-
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 
 public class ModifyElementFragment extends Fragment {
@@ -29,7 +26,7 @@ public class ModifyElementFragment extends Fragment {
             String argumentoNombre = args.getString("nombre_proyecto");
             String argDesc = args.getString("desc_proyecto");
             String argImg = args.getString("img_proyecto");
-            EditText nombrePro = view.findViewById(R.id.txtNombreProEdit);
+            EditText nombrePro = view.findViewById(R.id.txtIdProDelete);
             EditText descPro = view.findViewById(R.id.txtDescProEdit);
             EditText imgPro = view.findViewById(R.id.txtImgProEdit);
             nombrePro.setText(argumentoNombre);
