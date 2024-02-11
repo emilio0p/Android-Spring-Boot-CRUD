@@ -72,6 +72,7 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ViewHold
 
                 // Crear un Bundle para los argumentos y agregar los valores necesarios
                 Bundle args = new Bundle();
+                args.putInt("id_proyecto", project.getId());
                 args.putString("nombre_proyecto", project.getNombre());
                 args.putString("desc_proyecto", project.getDescripcion());
                 args.putString("img_proyecto", project.getImagen());
