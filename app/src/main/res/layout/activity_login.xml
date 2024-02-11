@@ -74,5 +74,24 @@
             android:textColorHighlight="@color/white"
             android:textColorLink="@color/white"
             android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/btnLoginGoogle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:backgroundTint="#FFFFFF"
+            android:fontFamily="@font/poppins_semibold"
+            android:gravity="center|center_vertical"
+            android:text="Iniciar con Google"
+            android:textColor="#3E3E3E"
+            android:textColorHighlight="@color/white"
+            android:textColorLink="@color/white"
+            android:textSize="15sp"
+            app:icon="@drawable/googleg_standard_color_18"
+            app:iconTint="@null" />
+
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

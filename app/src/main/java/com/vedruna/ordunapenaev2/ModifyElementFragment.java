@@ -136,13 +136,20 @@ public class ModifyElementFragment extends Fragment {
                         public void onResponse(Call<Project> call, Response<Project> response) {
                             if (response.isSuccessful()) {
                                 Project p = response.body();
-                                txtId.setText(Integer.toString(p.getId()));
-                                txtNombre.setText(p.getNombre());
-                                txtDesc.setText(p.getDescripcion());
-                                txtImg.setText(p.getImagen());
+                                if (p==null){
+                                    Toast.makeText(getContext(), "Error al obtener los datos",
+                                            Toast.LENGTH_SHORT).show();
+                                } else {
+                                    txtId.setText(Integer.toString(p.getId()));
+                                    txtNombre.setText(p.getNombre());
+                                    txtDesc.setText(p.getDescripcion());
+                                    txtImg.setText(p.getImagen());
+                                }
+
 
                             } else {
-                                Toast.makeText(getContext(), "Error al obtener los datos", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getContext(), "Error al obtener los datos",
+                                        Toast.LENGTH_SHORT).show();
                             }
 
                         }
