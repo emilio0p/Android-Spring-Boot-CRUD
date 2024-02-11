@@ -1,6 +1,7 @@
 package com.vedruna.ordunapenaev2;
 
 import java.util.List;
+import java.util.Optional;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -15,6 +16,9 @@ public interface ApiService {
 
     @GET("api")
     Call<List<Project>> getProjects();
+
+    @GET("api/{id}")
+    Call<Project> getProjectById(@Path("id") long id);
 
     @POST("api/insert")
     Call<Void> addProjects(@Body Project p);
