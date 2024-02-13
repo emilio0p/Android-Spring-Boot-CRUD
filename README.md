@@ -17,7 +17,15 @@ Este proyecto consiste en una aplicación Android desarrollada en Android Studio
 
     - [Activity Login](#activity-login)
     - [Activity Home](#activity-home)
-    - [Activity Añadir elemento](#activity-añadir-elemento)
+    - [Activity Añadir Elemento](#activity-añadir-elemento)
+    - [Activity Modificar Elemento](#activity-modificar-elemento)
+    - [Activity Eliminar Elemento](#activity-eliminar-elemento)
+    - [Activity Cerrar Sesión](#activity-cerrar-sesión)
+
+4. [Funcionalidades adicionales](#💡-funcionalidades-adicionales-implementadas)
+5. [Versiones y dependencias](#versiones-y-dependencias)
+    - [Dependencias](#dependencias)
+6. [Observaciones](#observaciones)
 
 ## API utilizada
 
