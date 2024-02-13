@@ -1,5 +1,5 @@
 package com.vedruna.ordunapenaev2;
-import android.annotation.SuppressLint;
+
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,23 +13,25 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.squareup.picasso.Picasso;
 
-
 import java.util.List;
 
-
+/**
+ * Adaptador para mostrar proyectos en un RecyclerView.
+ */
 public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ViewHolder> {
 
     private List<Project> projectList;
     private Context context;
 
-    public int pos;
-
+    /**
+     * Constructor del adaptador.
+     * @param projectList Lista de proyectos a mostrar.
+     */
     public ProjectAdapter(List<Project> projectList) {
         this.projectList = projectList;
     }
@@ -38,48 +40,43 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ViewHold
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         context = parent.getContext();
-        View view = LayoutInflater.from(context).inflate(R.layout.item_project, parent, false);
-
-
+        View view = LayoutInflater.from(context).inflate(R.layout.item_project, parent,
+                false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView")
-    int position) {
-        pos = position;
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Project project = projectList.get(position);
 
+        // Configuración de los elementos de la vista del proyecto
         holder.textViewIdProyecto.setText("ISPI: " + project.getId());
         holder.textViewNombre.setText(project.getNombre());
         holder.textViewDescripcion.setText(project.getDescripcion());
 
-        // Cargar la imagen utilizando Picasso
-
+        // Carga de la imagen utilizando Picasso
         Picasso.get().load(project.getImagen())
-                .placeholder(R.drawable.ic_home)
-                .error(R.drawable.ic_home)
+                .placeholder(R.drawable.ic_delete)
+                .error(R.drawable.ic_delete)
                 .transform(new RoundRectTransformation(30,0))
                 .into(holder.imageView);
 
+        // Configuración de los listeners de los botones de edición y eliminación
         holder.btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int position = holder.getAdapterPosition();
                 Project project = projectList.get(position);
-                // Obtener el NavController desde el View raíz del fragmento actual
+                // Obtención del NavController desde el View raíz del fragmento actual
                 NavController navController = Navigation.findNavController(v);
-
-                // Crear un Bundle para los argumentos y agregar los valores necesarios
+                // Creación de un Bundle para los argumentos y agregar los valores necesarios
                 Bundle args = new Bundle();
                 args.putInt("id_proyecto", project.getId());
                 args.putString("nombre_proyecto", project.getNombre());
                 args.putString("desc_proyecto", project.getDescripcion());
                 args.putString("img_proyecto", project.getImagen());
-
-                // Navegar al destino deseado junto con los argumentos
+                // Navegación al destino deseado junto con los argumentos
                 navController.navigate(R.id.modifyElementFragment, args);
-
             }
         });
 
@@ -88,20 +85,15 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ViewHold
             public void onClick(View v) {
                 int position = holder.getAdapterPosition();
                 Project project = projectList.get(position);
-                // Obtener el NavController desde el View raíz del fragmento actual
+                // Obtención del NavController desde el View raíz del fragmento actual
                 NavController navController = Navigation.findNavController(v);
-
-                // Crear un Bundle para los argumentos y agregar los valores necesarios
+                // Creación de un Bundle para los argumentos y agregar los valores necesarios
                 Bundle args = new Bundle();
                 args.putInt("id_proyecto", project.getId());
-
-                // Navegar al destino deseado junto con los argumentos
+                // Navegación al destino deseado junto con los argumentos
                 navController.navigate(R.id.deleteElementFragment, args);
             }
         });
-
-
-
     }
 
     @Override
@@ -109,13 +101,15 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ViewHold
         return projectList.size();
     }
 
+    /**
+     * Clase ViewHolder para contener los elementos de la vista de un proyecto.
+     */
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView textViewIdProyecto;
         TextView textViewNombre;
         TextView textViewDescripcion;
         ImageView imageView;
-
         Button btnEdit;
         Button btnDelete;
 

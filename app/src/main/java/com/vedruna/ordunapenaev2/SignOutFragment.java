@@ -22,6 +22,9 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+/**
+ * Fragmento para cerrar sesión.
+ */
 public class SignOutFragment extends Fragment {
 
     GoogleSignInOptions gso;
@@ -37,42 +40,43 @@ public class SignOutFragment extends Fragment {
         Button btnYes = view.findViewById(R.id.btnYesSignOut);
         Button btnNo = view.findViewById(R.id.btnNoSignOut);
 
+        // Configuración de las opciones de inicio de sesión de Google
         gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
                 .build();
+        // Cliente de inicio de sesión de Google
         gsc = GoogleSignIn.getClient(getContext(), gso);
 
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getContext());
 
+        // Acción al hacer clic en "Sí" para cerrar sesión
         btnYes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                signOut();
+                signOut(); // Cerrar sesión de Google
 
+                // Redirigir al usuario a la pantalla de inicio de sesión
                 Intent intent = new Intent(getActivity(), Login.class);
                 startActivity(intent);
             }
         });
 
+        // Acción al hacer clic en "No" para cancelar el cierre de sesión
         btnNo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Navegar de regreso al fragmento de inicio
                 NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment);
-
-                // Ahora puedes utilizar el NavController como desees
-                // Por ejemplo, navegar a un destino específico
                 navController.navigate(R.id.homeFragment);
                 BottomNavigationView bottomNavigationView = getActivity().findViewById(R.id.bottomNavigationView);
                 bottomNavigationView.setSelectedItemId(R.id.navigation_home);
-
-
             }
         });
-
 
         return view;
     }
 
+    // Método para cerrar sesión de Google
     void signOut(){
         gsc.signOut().addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override

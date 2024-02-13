@@ -8,22 +8,35 @@ import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+/**
+ * Actividad principal que gestiona los fragmentos de la aplicación.
+ */
 public class FragmentsActivity extends AppCompatActivity {
 
+    /**
+     * Método llamado cuando la actividad está siendo creada.
+     * @param savedInstanceState El estado previamente guardado de la actividad, si lo hay.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fragments);
 
+        // Obtener la referencia al componente BottomNavigationView
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+
+        // Establecer el ítem seleccionado por defecto como el fragmento de inicio
         bottomNavigationView.setSelectedItemId(R.id.navigation_home);
 
-        NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
+        // Obtener el controlador de navegación del NavHostFragment
+        NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().
+                findFragmentById(R.id.nav_host_fragment);
+
         NavController navController = navHostFragment.getNavController();
 
-
+        // Asignar un listener para la selección de ítems en el BottomNavigationView
         bottomNavigationView.setOnItemSelectedListener(item -> {
-
+            // Navegar al fragmento correspondiente dependiendo del ítem seleccionado
             if (item.getItemId() == R.id.navigation_home) {
                 navController.navigate(R.id.homeFragment);
             } else if (item.getItemId() == R.id.navigation_create) {
@@ -38,7 +51,4 @@ public class FragmentsActivity extends AppCompatActivity {
             return true;
         });
     }
-
-
-
 }

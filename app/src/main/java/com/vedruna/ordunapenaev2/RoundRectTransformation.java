@@ -8,11 +8,19 @@ import android.graphics.RectF;
 
 import com.squareup.picasso.Transformation;
 
+/**
+ * Transformación para aplicar esquinas redondeadas a una imagen.
+ */
 public class RoundRectTransformation implements Transformation {
 
     private final int radius;
     private final int margin;
 
+    /**
+     * Constructor de la transformación.
+     * @param radius Radio de las esquinas redondeadas.
+     * @param margin Margen alrededor de la imagen.
+     */
     RoundRectTransformation(int radius, int margin) {
         this.radius = radius;
         this.margin = margin;
@@ -21,13 +29,16 @@ public class RoundRectTransformation implements Transformation {
     @Override
     public Bitmap transform(Bitmap source) {
         // Aplicar esquinas redondeadas a la imagen
-        Bitmap output = Bitmap.createBitmap(source.getWidth(), source.getHeight(), Bitmap.Config.ARGB_8888);
+        Bitmap output = Bitmap.createBitmap(source.getWidth(), source.getHeight(),
+                Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(output);
         final Paint paint = new Paint();
-        final RectF rectF = new RectF(margin, margin, source.getWidth() - margin, source.getHeight() - margin);
+        final RectF rectF = new RectF(margin, margin, source.getWidth() - margin,
+                source.getHeight() - margin);
         paint.setAntiAlias(true);
         canvas.drawRoundRect(rectF, radius, radius, paint);
-        paint.setXfermode(new android.graphics.PorterDuffXfermode(android.graphics.PorterDuff.Mode.SRC_IN));
+        paint.setXfermode(new android.graphics.PorterDuffXfermode
+                (android.graphics.PorterDuff.Mode.SRC_IN));
         canvas.drawBitmap(source, 0, 0, paint);
         if (source != output) {
             source.recycle();

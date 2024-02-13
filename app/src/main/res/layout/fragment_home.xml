@@ -11,7 +11,7 @@
         android:id="@+id/txtTituloProyectos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/poppins_extrabold"
         android:text="PROYECTOS"
         android:textAlignment="center"
@@ -21,6 +21,6 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 
 </LinearLayout>
